@@ -4,7 +4,13 @@
   "description": "API server untuk e-commerce website",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest"
+    "db:create:test": "NODE_ENV=test npx sequelize db:create",
+    "db:migrate:test": "NODE_ENV=test npx sequelize db:migrate",
+    "db:seed:test": "NODE_ENV=test npx sequelize db:seed:all",
+    "db:create:development": "NODE_ENV=development npx sequelize db:create",
+    "db:migrate:development": "NODE_ENV=development npx sequelize db:migrate",
+    "db:seed:development": "NODE_ENV=development npx sequelize db:seed:all",
+    "test": "NODE_ENV=test npx jest"
   },
   "repository": {
     "type": "git",
@@ -23,7 +29,9 @@
     "supertest": "^6.1.3"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1",
     "sequelize": "^6.5.1"
   }

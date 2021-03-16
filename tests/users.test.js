@@ -5,7 +5,7 @@ describe('testing POST /login success', function () {
     it('should return response with status code 200', function(done) {
         const body = {
             email: 'admin@mail.com',
-            password: 123456
+            password: '123456'
         }
 
         request(app)
@@ -37,7 +37,7 @@ describe('testing POST /login error', function () {
         it('should return response with status code 400', function(done) {
             const body = {
                 email: 'admin@mail.com',
-                password: 654321
+                password: '654321'
             }
     
             request(app)
@@ -49,11 +49,8 @@ describe('testing POST /login error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('errors')
-                    expect(Array.isArray(res.body.errors)).toEqual(true)
-                    expect(res.body.errors).toEqual(
-                        expect.arrayContaining(['invalid email or password'])
-                    )
+                    expect(res.body).toHaveProperty('error')
+                    expect(res.body.error).toEqual('invalid email or password')
     
                     done()
                 }
@@ -65,7 +62,7 @@ describe('testing POST /login error', function () {
         it('should return response with status code 400', function(done) {
             const body = {
                 email: 'amin@mail.com',
-                password: 123456
+                password: '123456'
             }
     
             request(app)
@@ -77,11 +74,8 @@ describe('testing POST /login error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('errors')
-                    expect(Array.isArray(res.body.errors)).toEqual(true)
-                    expect(res.body.errors).toEqual(
-                        expect.arrayContaining(['invalid email or password'])
-                    )
+                    expect(res.body).toHaveProperty('error')
+                    expect(res.body.error).toEqual('invalid email or password')
     
                     done()
                 }
@@ -105,11 +99,8 @@ describe('testing POST /login error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('errors')
-                    expect(Array.isArray(res.body.errors)).toEqual(true)
-                    expect(res.body.errors).toEqual(
-                        expect.arrayContaining(['email and password is required'])
-                    )
+                    expect(res.body).toHaveProperty('error')
+                    expect(res.body.error).toEqual('email and password is required')
     
                     done()
                 }
