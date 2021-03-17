@@ -24,7 +24,7 @@ describe('testing POST /login success', function () {
                 expect(res.body).toHaveProperty('role')
                 expect(typeof res.body.role).toEqual('string')
                 expect(res.body).toHaveProperty('email', body.email)
-
+                
                 done()
             }
         })

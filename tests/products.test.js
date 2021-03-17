@@ -2,16 +2,17 @@ const request = require('supertest')
 const app = require('../app')
 const {generate} = require('../helpers/verifyToken')
 
-let access_token_admin
+var access_token_admin
 let access_token_customer
 
 beforeAll(function() {
-    access_token_admin = generate({id: 1, email: 'admin@mail.com', role: 'admin'}, process.env.SECRET_KEY)
-    access_token_customer = generate({id: 1, email: 'cust@mail.com', role: 'customer'}, process.env.SECRET_KEY)
+    access_token_admin = generate({id: 1, email: 'admin@mail.com'}, process.env.SECRET_KEY)
+    access_token_customer = generate({id: 1, email: 'cust@mail.com'}, process.env.SECRET_KEY)
 })
 
 describe('testing POST /products success', function () {
     it('should return response with status code 201', function(done) {
+        console.log(access_token_admin, '<<<<<<<<<<<<1');
         const body = {
             name: 'Jacket',
             img_url: 'https://cdn.shopify.com/s/files/1/0231/8024/7118/products/ME-003422_Transition_Jacket_ME-01488_BrackenMagma_8ce676b9-1dcd-4bd9-985a-64d5bab6a9df_438x648_crop_center.png?v=1600684143',
@@ -70,10 +71,10 @@ describe('testing POST /products error', function () {
                 if (err) {
                     done(err)
                 } else {
-                    expect(res.statusCode).toEqual(403)
+                    expect(res.statusCode).toEqual(401)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('authentication failed')
+                    expect(res.body).toHaveProperty('msg')
+                    expect(res.body.msg).toEqual('authentication failed')
     
                     done()
                 }
@@ -101,8 +102,8 @@ describe('testing POST /products error', function () {
                 } else {
                     expect(res.statusCode).toEqual(403)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('not authorized')
+                    expect(res.body).toHaveProperty('msg')
+                    expect(res.body.msg).toEqual('not authorized')
     
                     done()
                 }
@@ -130,8 +131,10 @@ describe('testing POST /products error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('all fields should not be empty')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['all fields should not be empty'])
+                    )
     
                     done()
                 }
@@ -159,8 +162,10 @@ describe('testing POST /products error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('stock should not be less than 0')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['stock should not be less than 0'])
+                    )
     
                     done()
                 }
@@ -188,8 +193,10 @@ describe('testing POST /products error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('price should not be less than 0')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['price should not be less than 0'])
+                    )
     
                     done()
                 }
@@ -217,8 +224,10 @@ describe('testing POST /products error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('stock should be in number')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['stock should be in number format'])
+                    )
     
                     done()
                 }
@@ -230,7 +239,7 @@ describe('testing POST /products error', function () {
 // --------------------------------------------------------------------------
 
 describe('testing PUT /products/:id success', function () {
-    it('should return response with status code 201', function(done) {
+    it('should return response with status code 200', function(done) {
         const body = {
             name: 'Jacket',
             img_url: 'https://cdn.shopify.com/s/files/1/0231/8024/7118/products/ME-003422_Transition_Jacket_ME-01488_BrackenMagma_8ce676b9-1dcd-4bd9-985a-64d5bab6a9df_438x648_crop_center.png?v=1600684143',
@@ -240,14 +249,14 @@ describe('testing PUT /products/:id success', function () {
         }
 
         request(app)
-        .put('/products/1')
+        .put('/products/5')
         .set('access_token', access_token_admin)
         .send(body)
         .end(function(err, res) {
             if (err) {
                 done(err)
             } else {
-                expect(res.statusCode).toEqual(201)
+                expect(res.statusCode).toEqual(200)
                 expect(typeof res.body).toEqual('object')
                 expect(res.body).toHaveProperty('id')
                 expect(typeof res.body.id).toEqual('number')
@@ -289,10 +298,10 @@ describe('testing PUT /products/:id error', function () {
                 if (err) {
                     done(err)
                 } else {
-                    expect(res.statusCode).toEqual(403)
+                    expect(res.statusCode).toEqual(401)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('authentication failed')
+                    expect(res.body).toHaveProperty('msg')
+                    expect(res.body.msg).toEqual('authentication failed')
     
                     done()
                 }
@@ -320,8 +329,8 @@ describe('testing PUT /products/:id error', function () {
                 } else {
                     expect(res.statusCode).toEqual(403)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('not authorized')
+                    expect(res.body).toHaveProperty('msg')
+                    expect(res.body.msg).toEqual('not authorized')
     
                     done()
                 }
@@ -349,8 +358,10 @@ describe('testing PUT /products/:id error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('all fields should not be empty')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['all fields should not be empty'])
+                    )
     
                     done()
                 }
@@ -378,8 +389,10 @@ describe('testing PUT /products/:id error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('stock should not be less than 0')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['stock should not be less than 0'])
+                    )
     
                     done()
                 }
@@ -407,8 +420,10 @@ describe('testing PUT /products/:id error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('price should not be less than 0')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['price should not be less than 0'])
+                    )
     
                     done()
                 }
@@ -436,8 +451,10 @@ describe('testing PUT /products/:id error', function () {
                 } else {
                     expect(res.statusCode).toEqual(400)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('stock should be in number')
+                    expect(res.body).toHaveProperty('errors')
+                    expect(res.body.errors).toEqual(
+                        expect.arrayContaining(['stock should be in number format'])
+                    )
     
                     done()
                 }
@@ -462,7 +479,7 @@ describe('testing DELETE /products/:id success', function () {
                 expect(res.statusCode).toEqual(200)
                 expect(typeof res.body).toEqual('object')
                 expect(res.body).toHaveProperty('msg')
-                expect(res.body.error).toEqual('product deleted successfully')
+                expect(res.body.msg).toEqual('product deleted successfully')
 
                 done()
             }
@@ -480,10 +497,10 @@ describe('testing DELETE /products/:id error', function () {
                 if (err) {
                     done(err)
                 } else {
-                    expect(res.statusCode).toEqual(403)
+                    expect(res.statusCode).toEqual(401)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('authentication failed')
+                    expect(res.body).toHaveProperty('msg')
+                    expect(res.body.msg).toEqual('authentication failed')
     
                     done()
                 }
@@ -503,8 +520,8 @@ describe('testing DELETE /products/:id error', function () {
                 } else {
                     expect(res.statusCode).toEqual(403)
                     expect(typeof res.body).toEqual('object')
-                    expect(res.body).toHaveProperty('error')
-                    expect(res.body.error).toEqual('not authorized')
+                    expect(res.body).toHaveProperty('msg')
+                    expect(res.body.msg).toEqual('not authorized')
     
                     done()
                 }
