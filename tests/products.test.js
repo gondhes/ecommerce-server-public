@@ -12,7 +12,6 @@ beforeAll(function() {
 
 describe('testing POST /products success', function () {
     it('should return response with status code 201', function(done) {
-        console.log(access_token_admin, '<<<<<<<<<<<<1');
         const body = {
             name: 'Jacket',
             img_url: 'https://cdn.shopify.com/s/files/1/0231/8024/7118/products/ME-003422_Transition_Jacket_ME-01488_BrackenMagma_8ce676b9-1dcd-4bd9-985a-64d5bab6a9df_438x648_crop_center.png?v=1600684143',
