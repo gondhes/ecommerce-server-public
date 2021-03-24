@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Meja Rotan",
+    "img_url": "https://drive.google.com/uc?id=1J5GAwS2tZNxr6262Ih4fG1prlJlD1CPz",
+    "price": 1000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Meja Panjang",
+    "img_url": "https://drive.google.com/uc?id=1HE6Piui0rO4AdA-rV1x7raw3O43GnyxG",
+    "price": 1700000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Meja Nakas",
+    "img_url": "https://drive.google.com/uc?id=1MxiI69zTiWMiDZPDf3efzUb1dCwM8zdY",
+    "price": 1200000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Meja Kotak",
+    "img_url": "https://drive.google.com/uc?id=14NGiK8le7MussCpzqxTqtnVLCe_07oIJ",
+    "price": 900000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Sofa Kayu",
+    "img_url": "https://drive.google.com/uc?id=1kQioSL_kWr1klUwY4u-85vNYem7ak1mJ",
+    "price": 1500000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Kursi Rotan",
+    "img_url": "https://drive.google.com/uc?id=1lWRbOHkpgpkezAoRqSnqIdKbnypBou6z",
+    "price": 1000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Kursi Kecil",
+    "img_url": "https://drive.google.com/uc?id=1K-uv0pGeO4XRl6E95A4x1f0HgllRZayQ",
+    "price": 900000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Kursi Kayu",
+    "img_url": "https://drive.google.com/uc?id=1wYRtthYOVuxiShUeS47FW1OSGnWKsOxN",
+    "price": 1000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Sofa Single",
+    "img_url": "https://drive.google.com/uc?id=198STu93BzL89MOZNs62M1CniSaui9zrx",
+    "price": 1500000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Sofa Double",
+    "img_url": "https://drive.google.com/uc?id=1mAcDp6JUFiFHDiFwvRWKL1Cxf7PzyLxV",
+    "price": 2500000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Sofa Tidur",
+    "img_url": "https://drive.google.com/uc?id=1mbd_xDnvZ1RuHXRpR5eKbcQn-cEXftva",
+    "price": 3000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Meja Bulat",
+    "img_url": "https://drive.google.com/uc?id=16xw-k44urVT3p_bUTe5e9YQ1wBQl6gmC",
+    "price": 1500000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Meja TV",
+    "img_url": "https://drive.google.com/uc?id=1DBSKbB9B5i5iD5oLnhGHe2tHIG7RZxPI",
+    "price": 2500000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Kursi Gantung",
+    "img_url": "https://drive.google.com/uc?id=1xsVh7DwI6CFSOIeTXhJMSLBvKYpi1pxl",
+    "price": 300000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Sofa Rotan",
+    "img_url": "https://drive.google.com/uc?id=1geGJ7LC2i5ys4tTRF4BdDhnZlztuXABb",
+    "price": 1500000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Matrass",
+    "img_url": "https://drive.google.com/uc?id=1Z4KnYuzY1fbXeyllq3Iz9ZVv2ASxj4H_",
+    "price": 1000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Kursi Minimalis",
+    "img_url": "https://drive.google.com/uc?id=1UBdlpjjkvNvz3phQ6L7m8FMYS1pb9Gpm",
+    "price": 1000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Meja Resepsionis",
+    "img_url": "https://drive.google.com/uc?id=10bu8LM7EfXv-gIFf7Sbv09fAa8vjvQia",
+    "price": 4000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Rak TV Kayu",
+    "img_url": "https://drive.google.com/uc?id=1z63CEouivE0tNE9aWDh5K8V4xFNRzNYO",
+    "price": 2000000,
+    "stock": 100,
+    "categoryId": null
+  },
+  {
+    "name": "Kursi Kulit",
+    "img_url": "https://drive.google.com/uc?id=1x58BVudkiUcPZCiuWlAVIDi1MTkMzmAa",
+    "price": 2000000,
+    "stock": 100,
+    "categoryId": null
+  }
+]

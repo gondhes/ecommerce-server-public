@@ -29,6 +29,20 @@ class userController {
             next(err)
         })
     }
+
+    static register(req, res) {
+        let user = {
+            email: req.body.email,
+            password: req.body.password
+        }
+        User.create(user)
+        .then(data => {
+            res.status(201).json({success: true, msg: 'User created successfully'})
+        })
+        .catch(err => {
+            res.status(500).json({msg: 'Internal server error'})
+        })
+    }
 }
 
 module.exports = userController
