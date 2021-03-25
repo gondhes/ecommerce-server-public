@@ -4,6 +4,7 @@
   "description": "API server untuk e-commerce website",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "db:create:test": "NODE_ENV=test npx sequelize db:create",
     "db:migrate:test": "NODE_ENV=test npx sequelize db:migrate",
     "db:seed:test": "NODE_ENV=test npx sequelize db:seed:all",
